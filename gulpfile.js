@@ -84,7 +84,10 @@ gulp.task('sass', function () {
   var sassFiles = gulp.src(SRC_DIR + '/sass/*.scss')
     .pipe(plumber({errorHandler: notify.onError('Sass: <%= error.message %>')}))
     .pipe(sass({
-      includePaths: './bower_components'
+      includePaths: [
+        './bower_components',
+        './node_modules'
+      ]
     }));
 
   if (DIST) {
