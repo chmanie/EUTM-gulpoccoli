@@ -34,9 +34,9 @@ gulp.task('watch', ['scripts', 'html', 'sass'], function() {
       gulp.start('scripts');
     });
   });
-  var watchSasss = chokidar.watch(SRC_DIR + '/sass/**/*.scss');
-  watchSasss.on('ready', function () {
-    watchSasss.on('all', function () {
+  var watchSass = chokidar.watch(SRC_DIR + '/sass/**/*.scss');
+  watchSass.on('ready', function () {
+    watchSass.on('all', function () {
       gulp.start('sass');
     });
   });
@@ -49,9 +49,7 @@ gulp.task('watch', ['scripts', 'html', 'sass'], function() {
 gulp.task('scripts', function() {
     var jsFiles = gulp.src(SRC_DIR + '/js/index.js')
       .pipe(plumber({errorHandler: notify.onError('Browserify: <%= error.message %>')}))
-      .pipe(browserify({
-        transform: babelify
-      }));
+      .pipe(browserify({ transform: babelify }));
 
     var coffeeFiles = gulp.src(SRC_DIR + '/coffee/*.coffee')
       .pipe(plumber({errorHandler: notify.onError('Coffeescript: <%= error.message %>')}))
