@@ -2,6 +2,16 @@
 
 import Greeter from './greeter';
 
+import React from 'react';
+
+class ReactGreeter extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+
+React.render(<ReactGreeter name="React" />, document.querySelector('#reactGreet'));
+
 class FormalGreeter extends Greeter {
   constructor(name) {
 		super(name);
