@@ -114,10 +114,10 @@ gulp.task('serve', ['watch'], function () {
 	});
 });
 
-gulp.task('dist', function () {
+gulp.task('dist', function (done) {
   DIST = true;
   targetDir = DIST_DIR;
-  runSequence(['html', 'scripts', 'sass']);
+  runSequence(['html', 'scripts', 'sass'], done);
 });
 
 gulp.task('default', ['serve']);
